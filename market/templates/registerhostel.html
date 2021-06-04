@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    register hostel Page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-signin" style="color:white">
+            {{ form.hidden_tag() }}
+            <br><br><br>
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Login
+            </h1>
+            <br>
+            {{ form.name.label() }}
+            {{ form.name(class="form-control", placeholder="Hostel Name") }}
+
+            {{ form.address.label() }}
+            {{ form.address(class="form-control", placeholder="address") }}
+
+            {{ form.contact.label() }}
+            {{ form.contact(class="form-control", placeholder="Contact Number") }}
+
+            {{ form.rent.label() }}
+            {{ form.contact(class="form-control", placeholder="Rent") }}
+
+            {{ form.description.label() }}
+            {{ form.description(class="form-control", placeholder="Description") }}
+
+            {{ form.rooms.label() }}
+            {{ form.rooms(class="form-control", placeholder="Contact Number") }}
+
+            <br>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}
