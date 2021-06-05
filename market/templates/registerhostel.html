@@ -7,7 +7,7 @@
 <body class="text-center">
     <div class="container">
         <form method="POST" class="form-signin" style="color:white">
-            {{form.hidden_tag() }}
+            {{ form.hidden_tag() }}
             <br><br><br>
             <h1 class="h3 mb-3 font-weight-normal">
                 Please Login
@@ -29,12 +29,24 @@
             {{ form.hs_description(class="form-control", placeholder="Description") }}
 
             {{ form.rooms.label() }}
-            {{ form.rooms(class="form-control", placeholder="Contact Number") }}
+            {{ form.rooms(class="form-control", placeholder="Rooms") }}
+
+            {{ form.caution.label() }}
+            {{ form.caution(class="form-control", placeholder="Caution Deposit") }}
+
+            {{ form.curfew.label() }}
+            {{ form.curfew(class="form-control", placeholder="Curfew") }}
+
+            {{ form.maps_link.label() }}
+            {{ form.maps_link(class="form-control", placeholder="Maps Link") }}
+
+            {{ form.type.label() }}
+            {{ form.type(class="form-control", placeholder="Girls or Boys") }}
 
             <br>
 
             {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
-
+            <br><br><br><br>
         </form>
     </div>
 </body>
