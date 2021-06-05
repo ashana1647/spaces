@@ -1,1 +1,1 @@
-#spaces -Hostal Management system
+Spaces -Hostal Management system
