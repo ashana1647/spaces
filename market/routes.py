@@ -1,7 +1,7 @@
 from market import app
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from market.models import Hostels, User
-from market.forms import RegisterForm, LoginForm , RegisterHostel
+from market.forms import RegisterForm, LoginForm, RegisterHostel
 from market import db
 from flask_login import login_user, logout_user, login_required
 
@@ -10,7 +10,7 @@ from flask_login import login_user, logout_user, login_required
 def home_page():
     return render_template('home.html')
 
-@app.route('/search')
+@app.route('/search', methods=['GET', 'POST'])
 @login_required
 def search_page():
     hostels = Hostels.query.all()
@@ -56,25 +56,24 @@ def logout_page():
     flash("You have been logged out!", category='info')
     return redirect(url_for("home_page"))
 
-@app.route('/register_hostel', methods=['GET', 'POST'])
+@app.route('/registerhostel', methods=['GET', 'POST'])
 def add_hostel():
-    form1 = RegisterHostel()
-    if form1.validate_on_submit():
-        hs_name = request.form['Hostel name']
-        hs_address = request.form['Hostel Address']
-        hs_contact = request.form['contact']
-        hs_rent = request.form['rent']
-        hs_description = request.form['description']
-        rooms = request.form['no. of rooms']
+    form = RegisterHostel()
+    if form.validate_on_submit():
+        hs_name = request.form['hs_name']
+        hs_address = request.form['hs_address']
+        hs_contact = request.form['hs_contact']
+        hs_rent = request.form['hs_rent']
+        hs_description = request.form['hs_description']
+        rooms = request.form['rooms']
         caution = request.form['caution']
         curfew = request.form['curfew']
-        maps_link = request.form['maps link']
-        type = request.form['Choose the hostel type']
-
-        record = Hostels(hs_name, hs_address, hs_contact, hs_rent, hs_description, rooms, caution, curfew, maps_link, type)
+        maps_link = request.form['maps_link']
+        type = request.form['type']
+        record = Hostels(hs_name=form.hs_name.data, hs_address=form.hs_address.data, hs_contact=form.hs_contact.data, hs_rent=form.hs_rent.data, hs_description=form.hs_description.data, rooms=form.rooms.data, caution=form.caution.data, curfew=form.curfew.data, maps_link=form.maps_link.data, type=form.type.data)
         db.session.add(record)
         db.session.commit()
         return render_template('search.html')
     else:
-        return render_template('registerhostel.html',form=form1)
+        return render_template('registerhostel.html', form=form)
 
