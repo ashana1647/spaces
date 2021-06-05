@@ -7,26 +7,26 @@
 <body class="text-center">
     <div class="container">
         <form method="POST" class="form-signin" style="color:white">
-            {{ form.hidden_tag() }}
+            {{form.hidden_tag() }}
             <br><br><br>
             <h1 class="h3 mb-3 font-weight-normal">
                 Please Login
             </h1>
             <br>
-            {{ form.name.label() }}
-            {{ form.name(class="form-control", placeholder="Hostel Name") }}
+            {{ form.hs_name.label() }}
+            {{ form.hs_name(class="form-control", placeholder="Hostel Name") }}
 
-            {{ form.address.label() }}
-            {{ form.address(class="form-control", placeholder="address") }}
+            {{ form.hs_address.label() }}
+            {{ form.hs_address(class="form-control", placeholder="address") }}
 
-            {{ form.contact.label() }}
-            {{ form.contact(class="form-control", placeholder="Contact Number") }}
+            {{ form.hs_contact.label() }}
+            {{ form.hs_contact(class="form-control", placeholder="Contact Number") }}
 
-            {{ form.rent.label() }}
-            {{ form.contact(class="form-control", placeholder="Rent") }}
+            {{ form.hs_rent.label() }}
+            {{ form.hs_rent(class="form-control", placeholder="Rent") }}
 
-            {{ form.description.label() }}
-            {{ form.description(class="form-control", placeholder="Description") }}
+            {{ form.hs_description.label() }}
+            {{ form.hs_description(class="form-control", placeholder="Description") }}
 
             {{ form.rooms.label() }}
             {{ form.rooms(class="form-control", placeholder="Contact Number") }}

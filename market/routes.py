@@ -1,7 +1,7 @@
 from market import app
 from flask import render_template, redirect, url_for, flash
 from market.models import Hostels, User
-from market.forms import RegisterForm, LoginForm
+from market.forms import RegisterForm, LoginForm , RegisterHostel
 from market import db
 from flask_login import login_user, logout_user, login_required
 
@@ -76,5 +76,5 @@ def add_hostel():
         db.session.commit()
         return render_template('search.html')
     else:
-        return render_template('registerhostel.html')
+        return render_template('registerhostel.html',form=form1)
 
