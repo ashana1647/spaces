@@ -13,7 +13,6 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(length=60), nullable=False)
     hostel = db.relationship('Hostels', backref='owned_user', lazy=True)
 
-
     @property
     def password(self):
         return self.password
@@ -40,10 +39,3 @@ class Hostels(db.Model):
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
     def __repr__(self):
         return f'Hostels {self.name}'
-
-def __init__(self,username,email_address,password_hash):
-    self.username=username
-    self.email_address=email_address
-    self.password_hash=password_hash
-   
-db.create_all()
