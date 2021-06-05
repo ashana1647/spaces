@@ -38,6 +38,6 @@ class RegisterHostel(FlaskForm):
     caution = IntegerField('caution')
     curfew = StringField('curfew')
     maps_link = StringField('maps link')
-    type = SelectField('Choose the hostel type', [ InputRequired()], choices=[ ('', ''), ('girls', 'Girls'),('boys', 'Boys') ])
+    type = SelectField('Choose the hostel type', [ InputRequired()], choices=[ ('girls', 'Girls'),('boys', 'Boys') ])
     submit = SubmitField('Add Hostel')
 
