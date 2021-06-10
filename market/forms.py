@@ -29,15 +29,14 @@ class LoginForm(FlaskForm):
 
 
 class RegisterHostel(FlaskForm):
-    hs_name = StringField('Hostel name')
+    hs_name = StringField('Hostel Name')
     hs_address = StringField('Hostel Address')
-    hs_contact = IntegerField('contact')
-    hs_rent = IntegerField('rent')
-    hs_description = StringField('description')
-    rooms = IntegerField('no. of rooms')
-    caution = IntegerField('caution')
-    curfew = StringField('curfew')
-    maps_link = StringField('maps link')
+    hs_contact = IntegerField('Contact')
+    hs_rent = IntegerField('Rent')
+    hs_description = StringField('Description')
+    rooms = IntegerField('No. of rooms')
+    caution = IntegerField('Caution')
+    curfew = StringField('Curfew')
+    maps_link = StringField('Maps Link')
     type = SelectField('Choose the hostel type', [ InputRequired()], choices=[ ('girls', 'Girls'),('boys', 'Boys') ])
     submit = SubmitField('Add Hostel')
-
