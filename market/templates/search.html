@@ -79,11 +79,7 @@
             margin-left: 150px;
             color: #8b4513 ;
             }
-
-
-
-
-            #link{
+                #link{
                 margin-left: 820px;
                 margin-top:50px;
             }
@@ -108,10 +104,7 @@
         </ul>
           {% if current_user.is_authenticated %}
 
-            <form class="form-inline" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('add_hostel') }}">Add Hostel</a>
