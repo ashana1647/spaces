@@ -5,6 +5,7 @@ from market.forms import RegisterForm, LoginForm, RegisterHostel
 from market import db
 from flask_login import login_user, logout_user, login_required
 
+
 @app.route('/')
 @app.route('/home')
 def home_page():
@@ -77,3 +78,11 @@ def add_hostel():
     else:
         return render_template('registerhostel.html', form=form)
 
+@app.route('/search_page', methods=['GET', 'POST'])
+def searches():
+    q=request.args.get('q')
+    if q:
+        form=Hostels.query.filter(Hostel.hs_name.contains(q))
+    else:
+        form = Hostels.query.all()
+    return render_template('search_results.html', form=form)
