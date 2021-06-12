@@ -81,8 +81,12 @@ def add_hostel():
 @app.route('/search_page', methods=['GET', 'POST'])
 def searches():
     q=request.args.get('q')
+    print(q)
+    form=Hostels.query.filter(Hostels.hs_name.contains(q))
+    print(form)
+    return render_template('search_results.html', hostels=form)
     if q:
-        form=Hostels.query.filter(Hostel.hs_name.contains(q))
+        form=Hostels.query.filter(Hostels.hs_name.contains(q))
     else:
-        form = Hostels.query.all()
-    return render_template('search_results.html', form=form)
+        form = flash('We couldn\'t find any match to your query', category='danger')
+    

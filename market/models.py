@@ -35,7 +35,7 @@ class Hostels(db.Model):
     rooms = db.Column(db.Integer(), nullable=False)
     caution = db.Column(db.Integer(), nullable=False)
     curfew = db.Column(db.String(length=30), nullable=False)
-    maps_link = db.Column(db.String(length=1024), nullable=False, unique=True)
+    maps_link = db.Column(db.String(length=1024), nullable=True, unique=True)
     type = db.Column(db.String(length=30), nullable=False)
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
     def __repr__(self):
