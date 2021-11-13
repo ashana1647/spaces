@@ -78,15 +78,43 @@ def add_hostel():
     else:
         return render_template('registerhostel.html', form=form)
 
-@app.route('/search_page', methods=['GET', 'POST'])
-def searches():
-    q=request.args.get('q')
-    print(q)
-    form=Hostels.query.filter(Hostels.hs_name.contains(q))
-    print(form)
-    return render_template('search_results.html', hostels=form)
-    if q:
-        form=Hostels.query.filter(Hostels.hs_name.contains(q))
-    else:
-        form = flash('We couldn\'t find any match to your query', category='danger')
-    
+@app.route("/search_page", methods=['GET', 'POST'])
+def search():
+    cursor = g.con.cursor()
+    cursor.execute('SELECT * FROM Hostels WHERE hs_name OR hs_rent OR hs_address = %s', (request.form["search"],))
+    result = cursor.fetchall()
+    cursor.close()
+    return render_template('Results.html', result = result)
+
+
+@app.route('/sort')
+def sort():
+    rent = Hostels.query.order_by(Hostels.hs_rent).all()
+
+    results = [Hostels.format() for Hostels in rent]
+    return jsonify({
+        'success': True,
+        'results': results,
+        'count': len(results)
+    })
+
+@app.route('/boys_filter')
+def boys():
+  boys = Hostels.query.filter(Hostels.type.ilike("boys"))
+  results = [Hostels.format() for Hostels in boys]
+  return jsonify({
+    'success':True,
+    'results':results,
+    'count':len(results)
+  })
+
+
+@app.route('/girls_filter')
+def girls():
+  girls = Hostels.query.filter(Hostels.type.ilike("girls"))
+  results = [Hostels.format() for Hostels in girls]
+  return jsonify({
+    'success':True,
+    'results':results,
+    'count':len(results)
+  })
