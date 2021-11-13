@@ -67,9 +67,9 @@
             }
 
             #type{
-            margin-left: 450px;
+            margin-left: 150px;
             color: rgb(0,128,0);
-            margin-top:-120px;
+            margin-top:-75px;
             font-size: 35px;
             }
 
@@ -84,7 +84,13 @@
                 margin-top:50px;
             }
 
+<!--            #down{-->
+<!--            margin-top: 80px;-->
+<!--            }-->
 
+<!--            #up{-->
+<!--            margin-top: 80px;-->
+<!--            }-->
        </style>
    </head>
    <body>
@@ -94,7 +100,7 @@
        </div>
       <a class="navbar-brand" ><h1>Spaces</h1></a>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" id="up">
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url_for('home_page') }}">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -109,6 +115,22 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link">Filter :
+                        <select name="filter" id="filter">
+                            <option value="Girls">Girls</option>
+                            <option value="Boys">Boys</option>
+                        </select>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Sort :
+                        <select name="sort" id="sort">
+                            <option value="alphabetically">Alphabetically</option>
+                            <option value="By Rates">Rates</option>
+                        </select>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('add_hostel') }}">Add Hostel</a>
                 </li>
@@ -161,7 +183,6 @@
                         <p class="contact">Rooms Available</p><p class="colon"> : </p><p class="result">{{ hostel.rooms }}</p>
                         <p class="contact">Addess</p><p class="colon"> : </p><p class="result">{{ hostel.hs_address }}</p>
                     </div>
-                    <br>
                     <div class="des">
                         <h6>{{ hostel.hs_description }}</h6>
                     </div>
